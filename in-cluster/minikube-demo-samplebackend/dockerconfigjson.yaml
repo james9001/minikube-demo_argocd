@@ -1,0 +1,10 @@
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: dockerconfigjson
+  namespace: minikube-demo-samplebackend
+type: kubernetes.io/dockerconfigjson
+data:
+  .dockerconfigjson: >-
+    ewogICJpbnNlY3VyZS1yZWdpc3RyaWVzIjogWyJob3N0bWFjaGluZTo1MDAwIl0KfQ==
