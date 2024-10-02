@@ -25,8 +25,6 @@ spec:
         app.kubernetes.io/instance: samplefrontend
     spec:
       restartPolicy: Always
-      imagePullSecrets:
-        - name: dockerconfigjson
       containers:
         - name: samplefrontend
           image: hostmachine:5000/minikube-demo_samplefrontend:latest
