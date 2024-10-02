@@ -1,0 +1,30 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: minikube-demo-samplebackend
+spec:
+  generators:
+    - list:
+        elements:
+          - cluster_name: in-cluster
+            cluster_url: https://kubernetes.default.svc
+  template:
+    metadata:
+      name: 'minikube-demo-samplebackend'
+    spec:
+      destination:
+        namespace: minikube-demo-samplebackend
+        server: '{{cluster_url}}'
+      source:
+        path: 'in-cluster/minikube-demo-samplebackend/'
+        repoURL: https://github.com/james9001/minikube-demo_argocd.git
+        targetRevision: master
+      project: default
+      syncPolicy:
+        automated:
+          prune: true
+          allowEmpty: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
