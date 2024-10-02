@@ -1,0 +1,18 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: samplefrontend
+  namespace: minikube-demo-samplefrontend
+  labels:
+    app.kubernetes.io/version: '1'
+    app: samplefrontend
+spec:
+  selector:
+    app: samplefrontend
+    app.kubernetes.io/instance: samplefrontend
+  ports:
+    - name: web
+      port: 80
+      protocol: TCP
+      targetPort: 80

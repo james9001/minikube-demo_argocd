@@ -1,0 +1,31 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: samplebackend
+  namespace: minikube-demo-samplebackend
+  labels:
+    app.kubernetes.io/version: '1'
+    app: samplebackend
+spec:
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: samplebackend
+      app.kubernetes.io/instance: samplebackend
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: samplebackend
+        app.kubernetes.io/instance: samplebackend
+    spec:
+      restartPolicy: Always
+      containers:
+        - name: samplebackend
+          image: hostmachine:5000/minikube-demo_samplebackend:latest
+          imagePullPolicy: Always
