@@ -27,5 +27,5 @@ spec:
       restartPolicy: Always
       containers:
         - name: samplefrontend
-          image: http://hostmachine:5000/minikube-demo_samplefrontend:latest
+          image: hostmachine:5000/minikube-demo_samplefrontend:latest
           imagePullPolicy: Always
