@@ -11,6 +11,7 @@ spec:
   selector:
     app: samplefrontend
     app.kubernetes.io/instance: samplefrontend
+  type: LoadBalancer
   ports:
     - name: web
       port: 80
